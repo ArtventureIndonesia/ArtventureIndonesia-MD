@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="4dp"
+    app:cardCornerRadius="24dp"
+    android:backgroundTint="@color/purple"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="376dp"
+        android:layout_height="110dp"
+        android:padding="15dp">
+
+
+        <TextView
+            android:id="@+id/task_name"
+            android:layout_width="190sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/laila_bold"
+            android:maxLines="1"
+            android:text="Task Name"
+            android:textColor="@color/cream"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/check"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/task_desc"
+            android:layout_width="190sp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/laila_medium"
+            android:maxLines="2"
+            android:text="The diorama presents a vivid depiction of Dang Hyang Nirartha, a revered Hindu holy man who played a pivotal role in introducing Hinduism to Bali standing on a sandy path that seems to lead towards a temple. His figure exudes an aura of tranquility and wisdom, reflecting his significant spiritual stature. The careful crafting of his figure brings to life the historical and religious significance of Dang Hyang Nirartha. Dang Hyang Nirartha was reading his own work on the beach while enjoying the surrounding natural beauty. The structures of the Candi and Padmasana Temple, along with the majestic Mount Agung, are visible in the backdrop."
+            android:textColor="@color/cream"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/task_name"
+            app:layout_constraintTop_toBottomOf="@+id/task_name"
+            app:layout_constraintVertical_bias="0.128" />
+
+        <ImageView
+            android:id="@+id/check"
+            android:layout_width="59dp"
+            android:layout_height="61dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.507"
+            app:srcCompat="@drawable/active" />
+
+        <ImageView
+            android:id="@+id/coin"
+            android:layout_width="40dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:srcCompat="@drawable/coin" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/laila_medium"
+            android:text="10"
+            android:textColor="@color/cream"
+            android:textSize="35sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

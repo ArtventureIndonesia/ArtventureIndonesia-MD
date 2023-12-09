@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    tools:context=".ui.detailtask.DetailTaskActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="468dp"
+        android:layout_height="753dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954"
+        app:srcCompat="@drawable/transpern_logo2" />
+
+    <TextView
+        android:id="@+id/tv_judul_detailtask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/keaniaone_regular"
+        android:text="Judul Task"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_find"
+        app:layout_constraintTop_toBottomOf="@+id/tv_judul_detailtask"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/tv_deskripsidetail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/laila_medium"
+            android:text="@string/lorem_ipsum"
+            android:textAlignment="center"
+            android:textSize="12sp" />
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_find"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/purple"
+        android:fontFamily="@font/laila_bold"
+        android:text="@string/hunt_now"
+        android:textSize="16sp"
+        app:icon="@drawable/baseline_camera_alt_24"
+        app:iconGravity="textStart"
+        app:iconSize="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="10dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

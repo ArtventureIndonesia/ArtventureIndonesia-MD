@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">ArtventureIndonesia</string>
+    <string name="alamat_tempat">Alamat tempat</string>
+    <string name="nama_tempat">Nama tempat</string>
+    <string name="wrong_email">Input Correct Email</string>
+    <string name="wrong_password">The password must not be less than 8 characters</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="register_form">Don\'t have an account? Sign Up</string>
+    <string name="login_form">Already have an account? Sign In</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="lorem_ipsum">The painting “Menyambut Proklamasi Kemerdekaan Republik Indonesia ” is a vibrant and evocative representation of the joyous celebration of Indonesian independence. It is a beautiful blend of realism and surrealism, capturing the essence of the momentous occasion with a unique artistic flair. The painting was made by I Gede Putra Udiyaan using mixed media. \n
+                                \n
+                                The painting is dominated by figures that appear to be in a state of jubilation, their bodies swaying rhythmically as if dancing. Their movements, fluid and graceful, seem to embody the spirit of freedom and national pride that permeates the air. The figures are adorned in traditional Indonesian attire, adding an authentic touch to the scene and further emphasizing the nationalistic theme of the painting.\n
+                                \n
+                                “Menyambut Proklamasi Kemerdekaan Republik Indonesia” painting is a captivating portrayal of a significant moment in Indonesian history. It is a testament to the enduring spirit of the Indonesian people and their unwavering love for their country. This painting is more than just a visual feast; it is a narrative of resilience, unity, and national pride. It serves as a reminder of the joy of freedom and the value of cultural heritage, making it a truly remarkable piece of art.\n
+    The painting “Menyambut Proklamasi Kemerdekaan Republik Indonesia ” is a vibrant and evocative representation of the joyous celebration of Indonesian independence. It is a beautiful blend of realism and surrealism, capturing the essence of the momentous occasion with a unique artistic flair. The painting was made by I Gede Putra Udiyaan using mixed media. \n
+                                \n
+                                The painting is dominated by figures that appear to be in a state of jubilation, their bodies swaying rhythmically as if dancing. Their movements, fluid and graceful, seem to embody the spirit of freedom and national pride that permeates the air. The figures are adorned in traditional Indonesian attire, adding an authentic touch to the scene and further emphasizing the nationalistic theme of the painting.\n
+                                \n
+                                “Menyambut Proklamasi Kemerdekaan Republik Indonesia” painting is a captivating portrayal of a significant moment in Indonesian history. It is a testament to the enduring spirit of the Indonesian people and their unwavering love for their country. This painting is more than just a visual feast; it is a narrative of resilience, unity, and national pride. It serves as a reminder of the joy of freedom and the value of cultural heritage, making it a truly remarkable piece of art.\n
+    </string>
+    <string name="hunt_now">Hunt now</string>
+    <string name="image_choose">choose an image</string>
+</resources>
