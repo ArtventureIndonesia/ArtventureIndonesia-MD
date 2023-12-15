@@ -7,14 +7,60 @@
     android:background="@drawable/gradient_blue_green"
     tools:context=".ui.dashboard.MainActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ViewFlipper
+        android:id="@+id/crausel"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:autoStart="true"
+
+        android:flipInterval="3000"
+        android:inAnimation="@android:anim/slide_in_left"
+        android:outAnimation="@android:anim/slide_out_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/iklan1" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/iklan2" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/iklan3" />
+    </ViewFlipper>
+
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="368dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="371dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/crausel"
         app:srcCompat="@drawable/green_box" />
 
     <TextView
@@ -99,11 +145,11 @@
         android:id="@+id/imageViewPlace"
         android:layout_width="410dp"
         android:layout_height="502dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:srcCompat="@drawable/opening_box"
-        android:layout_marginTop="15dp"/>
+        app:srcCompat="@drawable/opening_box" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -117,43 +163,18 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/coin" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/gambar_owl2"
-        app:civ_border_color="#FF000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/laila_bold"
-        android:text="Mirah Cantik"
-        android:textColor="@color/cream"
-        android:textSize="30sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPlace"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTask"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageViewPlace"
-            app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/item_place" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewPlace"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_place" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,4 +25,8 @@
     </string>
     <string name="hunt_now">Hunt now</string>
     <string name="image_choose">choose an image</string>
+    <string name="congrats">Congrats!</string>
+    <string name="next">Continue</string>
+    <string name="account_created">Your account has been created</string>
+    <string name="email_username">Email/Username</string>
 </resources>

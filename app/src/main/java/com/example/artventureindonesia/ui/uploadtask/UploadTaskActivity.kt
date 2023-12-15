@@ -17,17 +17,17 @@ import com.example.artventureindonesia.utils.uriToFile
 import com.google.android.material.snackbar.Snackbar
 
 class UploadTaskActivity : AppCompatActivity() {
-//    private lateinit var binding: ActivityUploadTaskBinding
-//    private var currentImageUri: Uri? = null
-//
+    private lateinit var binding: ActivityUploadTaskBinding
+    private var currentImageUri: Uri? = null
+
 //    private val uploadTaskViewModel by viewModels<UploadTaskViewModel> {
 //        ViewModelFactory.getInstance(this)
 //    }
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = ActivityUploadTaskBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityUploadTaskBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 //
 //        binding.btnCamera.setOnClickListener {
 //            startCamera()
@@ -108,5 +108,5 @@ class UploadTaskActivity : AppCompatActivity() {
 //
 //    private fun showToast(message: String) {
 //        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-//    }
+    }
 }

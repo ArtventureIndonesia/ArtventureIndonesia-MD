@@ -5,21 +5,46 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.artventureindonesia.di.Injection
 import com.example.artventureindonesia.remote.repository.Repository
+import com.example.artventureindonesia.ui.dashboard.MainViewModel
+import com.example.artventureindonesia.ui.detailtask.DetailTaskViewModel
+import com.example.artventureindonesia.ui.login.LoginViewModel
+import com.example.artventureindonesia.ui.register.RegisterViewModel
+import com.example.artventureindonesia.ui.task.TaskViewModel
 
-class ViewModelFactory private constructor(
-    private val mRepository: Repository
-): ViewModelProvider.NewInstanceFactory() {
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//
-//    }
-//
-//    companion object {
-//        @Volatile
-//        private var instance: ViewModelFactory? = null
-//        fun getInstance(context: Context): ViewModelFactory =
-//            instance ?: synchronized(this) {
-//                instance ?: ViewModelFactory(
-//                    Injection.provideUserRespository(context))
-//            }.also { instance = it }
-//    }
+class ViewModelFactory (private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return when {
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
+                MainViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
+                LoginViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
+                RegisterViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(TaskViewModel::class.java) -> {
+                TaskViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(DetailTaskViewModel::class.java) -> {
+                DetailTaskViewModel(repository) as T
+            }
+
+            else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
+        }
+    }
+companion object {
+    @Volatile
+    private var INSTANCE: ViewModelFactory? = null
+    @JvmStatic
+    fun getInstance(context: Context): ViewModelFactory {
+        if (INSTANCE == null) {
+            synchronized(ViewModelFactory::class.java) {
+                INSTANCE = ViewModelFactory(Injection.provideRepository(context))
+            }
+        }
+        return INSTANCE as ViewModelFactory
+    }
+}
 }
