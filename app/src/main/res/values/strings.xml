@@ -29,4 +29,7 @@
     <string name="next">Continue</string>
     <string name="account_created">Your account has been created</string>
     <string name="email_username">Email/Username</string>
+    <string name="ok">Okay</string>
+    <string name="image_uploaded">Your image has been uploaded</string>
+    <string name="empty_image">image cannot be empty</string>
 </resources>

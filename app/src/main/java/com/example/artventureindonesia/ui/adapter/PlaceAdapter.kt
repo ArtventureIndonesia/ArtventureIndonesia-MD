@@ -26,7 +26,7 @@ class PlaceAdapter(private val context: Context) : ListAdapter<MuseumDataItem, P
         holder.bind(place)
         holder.itemView.setOnClickListener {
             val moveDataUserIntent = Intent(holder.itemView.context, TaskActivity::class.java)
-            moveDataUserIntent.putExtra(TaskActivity.ID, place.museumId)
+            moveDataUserIntent.putExtra(TaskActivity.ID, place.museumDoc)
             holder.itemView.context.startActivity(moveDataUserIntent)
         }
 

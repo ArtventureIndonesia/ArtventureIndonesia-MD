@@ -11,17 +11,17 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ViewFlipper
         android:id="@+id/crausel"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:layout_marginTop="10dp"
         android:autoStart="true"
 
         android:flipInterval="3000"
@@ -51,6 +51,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/iklan3" />
     </ViewFlipper>
+
 
     <ImageView
         android:id="@+id/imageView4"
@@ -176,5 +177,17 @@
         app:layout_constraintTop_toTopOf="@+id/imageViewPlace"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_place" />
+
+    <ImageButton
+        android:id="@+id/img_reward"
+        android:layout_width="59dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="44dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chest"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

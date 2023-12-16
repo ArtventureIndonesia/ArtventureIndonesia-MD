@@ -9,7 +9,9 @@ import com.example.artventureindonesia.ui.dashboard.MainViewModel
 import com.example.artventureindonesia.ui.detailtask.DetailTaskViewModel
 import com.example.artventureindonesia.ui.login.LoginViewModel
 import com.example.artventureindonesia.ui.register.RegisterViewModel
+import com.example.artventureindonesia.ui.setting.SettingsViewModel
 import com.example.artventureindonesia.ui.task.TaskViewModel
+import com.example.artventureindonesia.ui.uploadtask.UploadTaskViewModel
 
 class ViewModelFactory (private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
@@ -30,7 +32,12 @@ class ViewModelFactory (private val repository: Repository) : ViewModelProvider.
             modelClass.isAssignableFrom(DetailTaskViewModel::class.java) -> {
                 DetailTaskViewModel(repository) as T
             }
-
+            modelClass.isAssignableFrom(UploadTaskViewModel::class.java) -> {
+                UploadTaskViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {
+                SettingsViewModel(repository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

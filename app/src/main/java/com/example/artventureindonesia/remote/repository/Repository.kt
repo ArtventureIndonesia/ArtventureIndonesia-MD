@@ -12,6 +12,7 @@ import com.example.artventureindonesia.pref.UserPreference
 import com.example.artventureindonesia.remote.api.ApiConfig
 import com.example.artventureindonesia.remote.response.ErrorResponse
 import com.example.artventureindonesia.remote.response.LoginResponse
+import com.example.artventureindonesia.remote.response.MLResponse
 import com.example.artventureindonesia.remote.response.MuseumDataItem
 import com.example.artventureindonesia.remote.response.RegisterResponse
 import com.example.artventureindonesia.remote.response.TaskDataItem
@@ -19,8 +20,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
-
+import java.io.File
 
 
 class Repository private constructor(
@@ -90,13 +93,14 @@ class Repository private constructor(
             val response = ApiConfig.getApiService(user.user_id)
             val placeResponse = response.getPlace()
             val place = placeResponse.museumData
-            val placeList = place.map { it ->
+            val placeList = place?.map { it ->
                 MuseumDataItem(
-                    address = it.address,
-                    museumName = it.museumName,
-                    urlMuseumImg = it.urlMuseumImg,
-                    location = it.location,
-                    museumId = it.museumId
+                    museumDoc = it?.museumDoc,
+                    address = it?.address,
+                    museumName = it?.museumName,
+                    urlMuseumImg = it?.urlMuseumImg,
+                    location = it?.location,
+                    museumId = it?.museumId
                 )
             }
             if (placeResponse.error == false) {
@@ -165,6 +169,34 @@ class Repository private constructor(
         } catch (e: Exception) {
             Log.d("error", e.toString())
             emit(Result.Error("Signal Problem"))
+        }
+    }
+
+
+    fun uploadImage(imageFile: File, key: String) = liveData {
+        emit(Result.Loading)
+        val user = runBlocking { userPreference.getSession().first() }
+        Log.d("testttt", key)
+        val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+        val requestId = user.user_id.toRequestBody("text/plain".toMediaType())
+        val multipartBody = MultipartBody.Part.createFormData(
+            "imageFile",
+            imageFile.name,
+            requestImageFile
+        )
+        Log.d("test", user.user_id)
+        Log.d("test", multipartBody.toString())
+        try {
+            val response = ApiConfig.getApiService(user.user_id)
+            val successResponse = response.uploadImage(multipartBody, requestId, key)
+            emit(Result.Success(successResponse))
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            Log.d("error", e.toString())
+            val errorResponse = Gson().fromJson(errorBody, MLResponse::class.java)
+            emit(Result.Error(errorResponse.message ?: "Error tidak diketahui"))
+        } catch (e: Exception) {
+            emit(Result.Error("Kesalahan jaringan atau server"))
         }
     }
 

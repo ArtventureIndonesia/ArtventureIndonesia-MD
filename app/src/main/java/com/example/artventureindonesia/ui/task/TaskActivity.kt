@@ -11,15 +11,10 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.artventureindonesia.R
-import com.example.artventureindonesia.databinding.ActivityMainBinding
 import com.example.artventureindonesia.databinding.ActivityTaskBinding
-import com.example.artventureindonesia.remote.response.MuseumDataItem
 import com.example.artventureindonesia.remote.response.TaskDataItem
 import com.example.artventureindonesia.remote.result.Result
-import com.example.artventureindonesia.ui.adapter.PlaceAdapter
 import com.example.artventureindonesia.ui.adapter.TaskAdapter
-import com.example.artventureindonesia.ui.dashboard.MainViewModel
 import com.example.artventureindonesia.ui.login.LoginActivity
 import com.example.artventureindonesia.ui.viewmodel.ViewModelFactory
 

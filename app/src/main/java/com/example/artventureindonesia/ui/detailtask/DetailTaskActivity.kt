@@ -1,5 +1,6 @@
 package com.example.artventureindonesia.ui.detailtask
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,8 @@ import com.example.artventureindonesia.databinding.ActivityDetailTaskBinding
 import com.example.artventureindonesia.remote.response.TaskData
 import com.example.artventureindonesia.ui.viewmodel.ViewModelFactory
 import com.example.artventureindonesia.remote.result.Result
+import com.example.artventureindonesia.ui.register.RegisterActivity
+import com.example.artventureindonesia.ui.uploadtask.UploadTaskActivity
 
 class DetailTaskActivity : AppCompatActivity() {
 
@@ -22,6 +25,16 @@ class DetailTaskActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val id = intent.getStringExtra(ID)?:"null"
+
+
+        binding.buttonFind.setOnClickListener {
+            val intent = Intent (this@DetailTaskActivity, UploadTaskActivity::class.java)
+            intent.putExtra(UploadTaskActivity.ID, id)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
 
         getTaskDetail()
     }
@@ -54,11 +67,6 @@ class DetailTaskActivity : AppCompatActivity() {
     private fun setDetailTask(task: TaskData) {
         binding.apply {
 
-//            Glide.with(this@DetailTaskActivity)
-//                .load(story.photoUrl)
-//                .into(
-//                    imageDetail
-//                )
             tvJudulDetailtask.text = task.objectName
             tvDeskripsidetail.text = task.objectDescription
         }

@@ -2,9 +2,11 @@ package com.example.artventureindonesia.remote.api
 
 import com.example.artventureindonesia.remote.response.DetailTaskResponse
 import com.example.artventureindonesia.remote.response.LoginResponse
+import com.example.artventureindonesia.remote.response.MLResponse
 import com.example.artventureindonesia.remote.response.PlaceResponse
 import com.example.artventureindonesia.remote.response.RegisterResponse
 import com.example.artventureindonesia.remote.response.TaskResponse
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.GET
 import retrofit2.http.Multipart
@@ -38,9 +40,18 @@ interface ApiService {
     @GET("/museum/pohR79Bp9F6GNlV1FEmi")
     suspend fun getTask(): TaskResponse
 
+
     @GET("/museum/pohR79Bp9F6GNlV1FEmi/{object_doc}")
     suspend fun getDetailTask(
         @Path("object_doc") objectDoc: String
     ): DetailTaskResponse
+
+    @Multipart
+    @POST("/predict/pohR79Bp9F6GNlV1FEmi/{object_doc}")
+    suspend fun uploadImage(
+        @Part imageFile: MultipartBody.Part,
+        @Part("user_id") id: RequestBody,
+        @Path("object_doc") objectDoc: String
+    ): MLResponse
 
 }
