@@ -9,6 +9,7 @@ import com.example.artventureindonesia.ui.dashboard.MainViewModel
 import com.example.artventureindonesia.ui.detailtask.DetailTaskViewModel
 import com.example.artventureindonesia.ui.login.LoginViewModel
 import com.example.artventureindonesia.ui.register.RegisterViewModel
+import com.example.artventureindonesia.ui.reward.RewardViewModel
 import com.example.artventureindonesia.ui.setting.SettingsViewModel
 import com.example.artventureindonesia.ui.task.TaskViewModel
 import com.example.artventureindonesia.ui.uploadtask.UploadTaskViewModel
@@ -37,6 +38,9 @@ class ViewModelFactory (private val repository: Repository) : ViewModelProvider.
             }
             modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {
                 SettingsViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(RewardViewModel::class.java) -> {
+                RewardViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

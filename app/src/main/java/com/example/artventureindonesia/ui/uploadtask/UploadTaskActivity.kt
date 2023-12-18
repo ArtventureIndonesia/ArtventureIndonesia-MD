@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -40,8 +41,6 @@ class UploadTaskActivity : AppCompatActivity() {
 
         objectDocId = intent.getStringExtra(ID)
 
-        Log.d("UploadTaskActivityy", "Received objectDocId: $objectDocId")
-
         binding.btnGallery.setOnClickListener { startGallery() }
         binding.btnCamera.setOnClickListener { startCamera() }
         binding.btnUpload.setOnClickListener { uploadImage() }
@@ -63,7 +62,6 @@ class UploadTaskActivity : AppCompatActivity() {
             currentImageUri?.let { uri ->
                 val image = uriToFile(uri, this).reduceFileImage()
                 Log.d("Image File", "showImage: ${image.path}")
-//                objectDocId?.let { Log.d("IDddd", it) }
 
                 objectDocId?.let {
                     viewModel.uploadImage(image, it).observe(this) { result ->
@@ -74,16 +72,14 @@ class UploadTaskActivity : AppCompatActivity() {
                                 }
 
                                 is Result.Success -> {
-                                    //                                showToast(result.data.message!!)
                                     showLoading(false)
-//                                    alertDialog(result.data.message)
                                     handleUploadResult(result.data)
                                 }
 
                                 is Result.Error -> {
                                     showToast(result.error)
                                     showLoading(false)
-                                    val intent = Intent(this, DetailTaskActivity::class.java)
+                                    val intent = Intent(this, TaskActivity::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_CLEAR_TOP
                                     startActivity(intent)
@@ -138,8 +134,10 @@ class UploadTaskActivity : AppCompatActivity() {
     private fun handleUploadResult(response: MLResponse) {
         if (response.result == "Gagal") {
             alertDialog("Kamu salah mengerjakan task", stayOnPage = true)
-        } else {
+        } else if (response.result == "Behasil") {
             alertDialog(response.message ?: getString(R.string.congrats), stayOnPage = false)
+        } else if (response.message == "Object has been taked by user") {
+            alertDialog(response.message, stayOnPage = true)
         }
     }
 
@@ -150,7 +148,7 @@ class UploadTaskActivity : AppCompatActivity() {
             setPositiveButton(getString(R.string.ok)) { _, _ ->
                 if (!stayOnPage) {
                     val intent = Intent(context, TaskActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()
                 }
@@ -160,24 +158,29 @@ class UploadTaskActivity : AppCompatActivity() {
         }
     }
 
-//    private fun alertDialog(message: String) {
-//        AlertDialog.Builder(this).apply {
-//            val title = getString(R.string.congrats)
-//            val storyUploaded = getString(R.string.image_uploaded)
-//            val ok = getString(R.string.ok)
-//
-//            setTitle(title)
-//            setMessage(storyUploaded)
-//            setPositiveButton(ok) { _, _ ->
-//                val intent = Intent(context, TaskActivity::class.java)
-//                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-//                startActivity(intent)
-//                finish()
+//    private fun showAlertDialogCostume(type: Int) {
+//        val alertDialogBuilder = AlertDialog.Builder(this@UploadTaskActivity).create()
+//        val view = layoutInflater.inflate(R.layout.costume_alert, null)
+//        alertDialogBuilder.setView(view)
+//        val btnOk = view.findViewById<Button>(R.id.btn_ok)
+//        alertDialogBuilder.setCanceledOnTouchOutside(false)
+//        btnOk.setOnClickListener {
+//            if (type == FIRST_NUMBER) {
+//                mainViewModel.setNumber(firstNumber, true)
+//                Toast.makeText(this@MainActivity, "${firstNumber.value}", Toast.LENGTH_SHORT)
+//                    .show()
+//                setImageNumber()
+//            } else {
+//                mainViewModel.setSecondNumber(secondNumber, true)
+//                Toast.makeText(this@MainActivity, "${secondNumber.value}", Toast.LENGTH_SHORT)
+//                    .show()
+//                setSecondImageNumber()
 //            }
-//            create()
-//            show()
+//            alertDialogBuilder.dismiss()
 //        }
+//        alertDialogBuilder.show()
 //    }
+
 
     companion object {
         const val ID = "object_doc"

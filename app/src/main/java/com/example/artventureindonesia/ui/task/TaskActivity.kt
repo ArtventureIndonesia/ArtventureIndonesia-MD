@@ -10,12 +10,15 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.artventureindonesia.databinding.ActivityTaskBinding
 import com.example.artventureindonesia.remote.response.TaskDataItem
 import com.example.artventureindonesia.remote.result.Result
 import com.example.artventureindonesia.ui.adapter.TaskAdapter
 import com.example.artventureindonesia.ui.login.LoginActivity
+import com.example.artventureindonesia.ui.reward.RewardActivity
+import com.example.artventureindonesia.ui.setting.SettingsActivity
 import com.example.artventureindonesia.ui.viewmodel.ViewModelFactory
 
 class TaskActivity : AppCompatActivity() {
@@ -38,10 +41,18 @@ class TaskActivity : AppCompatActivity() {
 
         val item = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvTask.addItemDecoration(item)
+
+        binding.imgReward.setOnClickListener{
+            val intentReward = Intent(this@TaskActivity, RewardActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intentReward)
+        }
+
     }
 
     private fun getSession() {
         viewModel.getSession().observe(this) { user ->
+
             if (!user.isLogin) {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
@@ -55,8 +66,8 @@ class TaskActivity : AppCompatActivity() {
                             }
                             is Result.Success -> {
                                 showLoading(false)
-                                val place = result.data
-                                place?.let { taskAdapter(it) }
+                                val task = result.data
+                                task?.let { taskAdapter(it) }
                             }
 
                             is Result.Error -> {

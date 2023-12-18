@@ -21,7 +21,9 @@ import com.example.artventureindonesia.ui.opening.OpeningActivity
 import com.example.artventureindonesia.ui.viewmodel.ViewModelFactory
 import com.example.artventureindonesia.remote.result.Result
 import com.example.artventureindonesia.ui.detailtask.DetailTaskActivity
+import com.example.artventureindonesia.ui.register.RegisterActivity
 import com.example.artventureindonesia.ui.reward.RewardActivity
+import com.example.artventureindonesia.ui.setting.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,18 +45,25 @@ class MainActivity : AppCompatActivity() {
         val item = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvPlace.addItemDecoration(item)
 
+        binding.btnSettings.setOnClickListener{
+            val intentSetting = Intent(this@MainActivity, SettingsActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intentSetting)
+        }
+
 
     }
 
     private fun getSession() {
         viewModel.getSession().observe(this) { user ->
-//            val greeting = resources.getString(user.point)
-//            binding.textView9.text = greeting
+                val name = resources.getString(R.string.greeting, user.email)
+                binding.tvHello.text = name
             if (!user.isLogin) {
                 startActivity(Intent(this, OpeningActivity::class.java))
                 finish()
             } else {
                     viewModel.getMuseum().observe(this) {result ->
+
                         if (result != null) {
                             when (result){
                                 is Result.Loading -> {
@@ -79,6 +88,8 @@ class MainActivity : AppCompatActivity() {
                         }
 
                 }
+
+                binding.tvPoint.text = user.point.toString()
             }
 
         }
@@ -113,8 +124,5 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-    companion object {
-        const val ID = "id"
-    }
 
 }

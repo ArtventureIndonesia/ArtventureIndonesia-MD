@@ -18,20 +18,13 @@ data class PlaceResponse(
 ) : Parcelable
 
 @Parcelize
-data class Location(
-
-	@field:SerializedName("_longitude")
-	val longitude: Double? = null,
-
-	@field:SerializedName("_latitude")
-	val latitude: Double? = null
-) : Parcelable
-
-@Parcelize
 data class MuseumDataItem(
 
 	@field:SerializedName("address")
 	val address: String? = null,
+
+	@field:SerializedName("isOpen")
+	val isOpen: Boolean? = null,
 
 	@field:SerializedName("museum_name")
 	val museumName: String? = null,
@@ -47,4 +40,14 @@ data class MuseumDataItem(
 
 	@field:SerializedName("museum_id")
 	val museumId: Int? = null
+) : Parcelable
+
+@Parcelize
+data class Location(
+
+	@field:SerializedName("_longitude")
+	val longitude: Double? = null,
+
+	@field:SerializedName("_latitude")
+	val latitude: Double? = null
 ) : Parcelable

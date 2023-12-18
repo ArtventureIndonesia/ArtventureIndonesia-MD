@@ -5,6 +5,7 @@ import com.example.artventureindonesia.remote.response.LoginResponse
 import com.example.artventureindonesia.remote.response.MLResponse
 import com.example.artventureindonesia.remote.response.PlaceResponse
 import com.example.artventureindonesia.remote.response.RegisterResponse
+import com.example.artventureindonesia.remote.response.RewardResponse
 import com.example.artventureindonesia.remote.response.TaskResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -40,6 +41,9 @@ interface ApiService {
     @GET("/museum/pohR79Bp9F6GNlV1FEmi")
     suspend fun getTask(): TaskResponse
 
+    @GET("/rewards")
+    suspend fun getReward(): RewardResponse
+
 
     @GET("/museum/pohR79Bp9F6GNlV1FEmi/{object_doc}")
     suspend fun getDetailTask(
@@ -53,5 +57,8 @@ interface ApiService {
         @Part("user_id") id: RequestBody,
         @Path("object_doc") objectDoc: String
     ): MLResponse
+
+
+
 
 }

@@ -50,7 +50,6 @@ class DetailTaskActivity : AppCompatActivity() {
 
                     is Result.Success -> {
                         showLoading(false)
-                        showToast(result.data.message)
                         val detailResponse = result.data.taskData
                         setDetailTask(detailResponse!!)
                     }

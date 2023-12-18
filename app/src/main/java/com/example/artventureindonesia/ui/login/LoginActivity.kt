@@ -133,6 +133,7 @@ class LoginActivity : AppCompatActivity() {
                             val user = UserModel(
                                 user_id = result.data.userData.userId,
                                 email = email,
+                                point = result.data.userData.userPoints,
                             )
                             viewModel.saveSession(user)
                             alertDialog()
@@ -157,6 +158,7 @@ class LoginActivity : AppCompatActivity() {
             setMessage(accountCreated)
             setPositiveButton(next) { _, _ ->
                 val intent = Intent(context, MainActivity::class.java)
+
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 finish()

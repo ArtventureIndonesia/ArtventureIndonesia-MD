@@ -15,6 +15,7 @@ import com.example.artventureindonesia.remote.response.LoginResponse
 import com.example.artventureindonesia.remote.response.MLResponse
 import com.example.artventureindonesia.remote.response.MuseumDataItem
 import com.example.artventureindonesia.remote.response.RegisterResponse
+import com.example.artventureindonesia.remote.response.RewardsDataItem
 import com.example.artventureindonesia.remote.response.TaskDataItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -68,7 +69,8 @@ class Repository private constructor(
                 val user = UserModel(
                     email = email,
                     user_id = loginResponse.userData.userId,
-                    isLogin = true
+                    isLogin = true,
+                    point = loginResponse.userData.userPoints,
                 )
                 ApiConfig.userId = loginResponse.message
                 userPreference.saveSession(user)
@@ -100,7 +102,8 @@ class Repository private constructor(
                     museumName = it?.museumName,
                     urlMuseumImg = it?.urlMuseumImg,
                     location = it?.location,
-                    museumId = it?.museumId
+                    museumId = it?.museumId,
+                    isOpen = it?.isOpen
                 )
             }
             if (placeResponse.error == false) {
@@ -142,7 +145,7 @@ class Repository private constructor(
             val jsonInString = e.response()?.errorBody()?.string()
             val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
             val errorMessage = errorBody.message
-            emit(Result.Error("Registration Failed : $errorMessage"))
+            emit(Result.Error("Get Task Failed : $errorMessage"))
         } catch (e: Exception) {
             Log.d("error", e.toString())
             emit(Result.Error("Signal Problem"))
@@ -176,7 +179,6 @@ class Repository private constructor(
     fun uploadImage(imageFile: File, key: String) = liveData {
         emit(Result.Loading)
         val user = runBlocking { userPreference.getSession().first() }
-        Log.d("testttt", key)
         val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
         val requestId = user.user_id.toRequestBody("text/plain".toMediaType())
         val multipartBody = MultipartBody.Part.createFormData(
@@ -184,8 +186,6 @@ class Repository private constructor(
             imageFile.name,
             requestImageFile
         )
-        Log.d("test", user.user_id)
-        Log.d("test", multipartBody.toString())
         try {
             val response = ApiConfig.getApiService(user.user_id)
             val successResponse = response.uploadImage(multipartBody, requestId, key)
@@ -199,6 +199,39 @@ class Repository private constructor(
             emit(Result.Error("Kesalahan jaringan atau server"))
         }
     }
+
+    fun getReward() = liveData {
+        emit(Result.Loading)
+        try {
+            val user = runBlocking { userPreference.getSession().first() }
+            val response = ApiConfig.getApiService(user.user_id)
+            val rewardResponse = response.getReward()
+            val reward = rewardResponse.rewardsData
+
+            val rewardList = reward?.map { it ->
+                RewardsDataItem(
+                    rewardName = it?.rewardName,
+                    rewardPoint = it?.rewardPoint,
+                    urlRewardImg = it?.urlRewardImg
+                )
+            }
+
+            if (rewardResponse.error == false) {
+                emit(Result.Success(rewardList))
+            }
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+            val errorMessage = errorBody.message
+            emit(Result.Error("Get Reward failed : $errorMessage"))
+            Log.d("reward", e.toString())
+        } catch (e: Exception) {
+            Log.d("error", e.toString())
+            emit(Result.Error("Signal Problem"))
+        }
+    }
+
+
 
     suspend fun saveSession(user: UserModel) {
         userPreference.saveSession(user)

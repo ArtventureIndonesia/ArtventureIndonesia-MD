@@ -1,106 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_blue_green"
     android:paddingBottom="10dp">
 
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv_username"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:fontFamily="@font/"-->
-<!--        android:text="nama lengkap"-->
-<!--        android:textSize="22sp"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/iv_profile"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/iv_profile"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />-->
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/laila_medium"
+        android:text="gmail user"
+        android:textColor="@color/cream"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_username"
+        app:layout_constraintStart_toStartOf="@+id/tv_username"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv_email"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:fontFamily="@font/poppins_semibold"-->
-<!--        android:text="@string/email_gmail_com"-->
-<!--        android:textColor="@color/gray"-->
-<!--        android:textSize="14sp"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/tv_username"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/tv_username"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_username" />-->
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/keaniaone_regular"
+        android:text="nama lengkap"
+        android:textColor="@color/cream"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="80dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email"
+        tools:layout_editor_absoluteX="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/cream"
+            >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/keaniaone_regular"
+                android:text="Edit Password"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.485" />
+
+            <ImageView
+                android:layout_width="37dp"
+                android:layout_height="39dp"
+                android:layout_gravity="end|center"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="edit password"
+                android:src="@drawable/baseline_lock_reset_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_logout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_edit_password">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/cream"
+            >
+
+            <TextView
+                android:id="@+id/tv_cdLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/keaniaone_regular"
+                android:text="Logout"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.485" />
+
+            <ImageView
+                android:layout_width="37dp"
+                android:layout_height="39dp"
+                android:layout_gravity="end|center"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="logout"
+                android:src="@drawable/baseline_logout_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_cdLogout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 <!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/card_edit_profile"-->
+<!--        android:id="@+id/card_logout"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="55dp"-->
 <!--        android:layout_marginHorizontal="20dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:backgroundTint="@color/primary_variant"-->
+<!--        android:layout_marginTop="30dp"-->
 <!--        app:cardCornerRadius="8dp"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_email">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center|start"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:fontFamily="@font/poppins_semibold"-->
-<!--            android:text="@string/edit_profile"-->
-<!--            android:textSize="16sp" />-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="end|center"-->
-<!--            android:layout_margin="8dp"-->
-<!--            android:contentDescription="@string/edit_profile"-->
-<!--            android:src="@drawable/baseline_arrow_forward_ios_24" />-->
-<!--    </androidx.cardview.widget.CardView>-->
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/card_edit_password"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="55dp"-->
-<!--        android:layout_marginHorizontal="20dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:backgroundTint="@color/primary_variant"-->
-<!--        app:cardCornerRadius="8dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/card_edit_profile">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center|start"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:fontFamily="@font/poppins_semibold"-->
-<!--            android:text="@string/edit_password"-->
-<!--            android:textSize="16sp" />-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="end|center"-->
-<!--            android:layout_margin="8dp"-->
-<!--            android:contentDescription="@string/edit_password"-->
-<!--            android:src="@drawable/baseline_arrow_forward_ios_24" />-->
-<!--    </androidx.cardview.widget.CardView>-->
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/card_change_language"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="55dp"-->
-<!--        android:layout_marginHorizontal="20dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:backgroundTint="@color/primary_variant"-->
-<!--        app:cardCornerRadius="8dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.6"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/card_edit_password">-->
 
@@ -109,8 +146,8 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_gravity="center|start"-->
 <!--            android:layout_margin="10dp"-->
-<!--            android:fontFamily="@font/poppins_semibold"-->
-<!--            android:text="@string/ganti_bahasa"-->
+<!--            android:fontFamily="@font/keaniaone_regular"-->
+<!--            android:text="Logout"-->
 <!--            android:textSize="16sp" />-->
 
 <!--        <ImageView-->
@@ -118,10 +155,9 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_gravity="end|center"-->
 <!--            android:layout_margin="8dp"-->
-<!--            android:contentDescription="@string/ganti_bahasa"-->
-<!--            android:src="@drawable/baseline_arrow_forward_ios_24" />-->
+<!--            android:contentDescription="edit password"-->
+<!--            android:src="@drawable/baseline_logout_24" />-->
 <!--    </androidx.cardview.widget.CardView>-->
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

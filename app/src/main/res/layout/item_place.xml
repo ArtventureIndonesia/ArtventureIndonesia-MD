@@ -34,7 +34,7 @@
         <TextView
             android:id="@+id/tv_title"
             android:fontFamily="@font/keaniaone_regular"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,18 +51,19 @@
         <TextView
             android:id="@+id/tv_alamat"
             android:layout_width="match_parent"
-            android:textColor="@color/black"
-            android:fontFamily="@font/laila_medium"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="12sp"
-            android:text="@string/alamat_tempat"
             android:layout_marginStart="2dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:maxLines="1"
             android:ellipsize="end"
+            android:fontFamily="@font/laila_medium"
+            android:maxLines="1"
+            android:text="@string/alamat_tempat"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
 

@@ -13,6 +13,7 @@ import com.example.artventureindonesia.databinding.ItemTaskBinding
 import com.example.artventureindonesia.remote.response.MuseumDataItem
 import com.example.artventureindonesia.remote.response.TaskDataItem
 import com.example.artventureindonesia.ui.detailtask.DetailTaskActivity
+import com.example.artventureindonesia.ui.reward.RewardActivity
 import com.example.artventureindonesia.ui.task.TaskActivity
 
 class TaskAdapter (private val context: Context) : ListAdapter<TaskDataItem, TaskAdapter.MyViewHolder>(
@@ -31,14 +32,16 @@ class TaskAdapter (private val context: Context) : ListAdapter<TaskDataItem, Tas
             moveDataUserIntent.putExtra(DetailTaskActivity.ID, task.objectDoc)
             holder.itemView.context.startActivity(moveDataUserIntent)
         }
-
     }
+
+
     class MyViewHolder(val binding: ItemTaskBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(task: TaskDataItem){
             binding.taskName.text = task.objectName
             binding.taskDesc.text = task.objectDescription
             binding.textPoint.text = task.points.toString()
+
         }
     }
     companion object {

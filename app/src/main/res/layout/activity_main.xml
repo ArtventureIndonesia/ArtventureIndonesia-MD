@@ -23,7 +23,6 @@
         android:layout_height="250dp"
         android:layout_marginTop="10dp"
         android:autoStart="true"
-
         android:flipInterval="3000"
         android:inAnimation="@android:anim/slide_in_left"
         android:outAnimation="@android:anim/slide_out_right"
@@ -58,6 +57,7 @@
         android:layout_width="371dp"
         android:layout_height="92dp"
         android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
         android:text="earned points"
         android:textColor="@color/cream"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintBottom_toTopOf="@+id/tv_point"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
 
@@ -84,7 +84,7 @@
         android:text="rank"
         android:textColor="@color/cream"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintBottom_toTopOf="@+id/tv_rank"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
@@ -96,20 +96,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/laila_bold"
-        android:text="000"
+        android:text="1"
         android:textColor="@color/cream"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="@+id/tv_point" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tv_rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/laila_bold"
-        android:text="000"
+        android:text="0"
         android:textColor="@color/cream"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
@@ -117,7 +117,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tv_point"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="73dp"
@@ -127,7 +127,7 @@
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="@+id/tv_rank" />
 
     <TextView
         android:id="@+id/textView7"
@@ -144,23 +144,37 @@
 
     <ImageView
         android:id="@+id/imageViewPlace"
-        android:layout_width="410dp"
-        android:layout_height="502dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         app:srcCompat="@drawable/opening_box" />
 
+    <TextView
+        android:id="@+id/tv_hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/keaniaone_regular"
+        android:text="Hello Krisna Juniartha"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPlace"
+        tools:layout_editor_absoluteX="30dp" />
+
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="35dp"
         android:layout_height="31dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_point"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9"
+        app:layout_constraintStart_toEndOf="@+id/tv_point"
+        app:layout_constraintTop_toTopOf="@+id/tv_rank"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/coin" />
 
@@ -169,24 +183,24 @@
         android:id="@+id/rvPlace"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewPlace"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hello"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_place" />
 
     <ImageButton
-        android:id="@+id/img_reward"
-        android:layout_width="59dp"
-        android:layout_height="51dp"
+        android:id="@+id/btn_settings"
+        android:layout_width="68dp"
+        android:layout_height="69dp"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="44dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:src="@drawable/chest"
+        android:src="@drawable/setting_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -22,15 +23,24 @@ class PlaceAdapter(private val context: Context) : ListAdapter<MuseumDataItem, P
         return MyViewHolder(binding)
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val place = getItem(position)
-        holder.bind(place)
-        holder.itemView.setOnClickListener {
-            val moveDataUserIntent = Intent(holder.itemView.context, TaskActivity::class.java)
-            moveDataUserIntent.putExtra(TaskActivity.ID, place.museumDoc)
-            holder.itemView.context.startActivity(moveDataUserIntent)
-        }
 
+
+
+            val place = getItem(position)
+            holder.bind(place)
+            holder.itemView.setOnClickListener {
+                if (place.isOpen == true){
+                    val moveDataUserIntent = Intent(holder.itemView.context, TaskActivity::class.java)
+                    moveDataUserIntent.putExtra(TaskActivity.ID, place.museumDoc)
+                    holder.itemView.context.startActivity(moveDataUserIntent)
+
+                } else {
+                    Toast.makeText(holder.itemView.context, "Place not open", Toast.LENGTH_SHORT).show()
+                }
+
+            }
     }
+
     class MyViewHolder(val binding: ItemPlaceBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(place: MuseumDataItem){

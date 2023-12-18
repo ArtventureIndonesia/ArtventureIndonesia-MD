@@ -26,10 +26,15 @@
     <string name="hunt_now">Hunt now</string>
     <string name="image_choose">choose an image</string>
     <string name="congrats">Congrats!</string>
+    <string name="Logout">Logout!</string>
     <string name="next">Continue</string>
     <string name="account_created">Your account has been created</string>
+    <string name="account_logout">Your account has been logout</string>
     <string name="email_username">Email/Username</string>
     <string name="ok">Okay</string>
     <string name="image_uploaded">Your image has been uploaded</string>
     <string name="empty_image">image cannot be empty</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="greeting">Hello %1$s</string>
 </resources>
