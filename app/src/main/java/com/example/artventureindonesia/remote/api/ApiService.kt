@@ -1,5 +1,6 @@
 package com.example.artventureindonesia.remote.api
 
+import com.example.artventureindonesia.remote.response.DetailRewardResponse
 import com.example.artventureindonesia.remote.response.DetailTaskResponse
 import com.example.artventureindonesia.remote.response.LoginResponse
 import com.example.artventureindonesia.remote.response.MLResponse
@@ -57,6 +58,11 @@ interface ApiService {
         @Part("user_id") id: RequestBody,
         @Path("object_doc") objectDoc: String
     ): MLResponse
+
+    @GET("/rewards/{reward_doc}")
+    suspend fun getDetailReward(
+        @Path("reward_doc") rewardDoc: String
+    ): DetailRewardResponse
 
 
 

@@ -212,7 +212,8 @@ class Repository private constructor(
                 RewardsDataItem(
                     rewardName = it?.rewardName,
                     rewardPoint = it?.rewardPoint,
-                    urlRewardImg = it?.urlRewardImg
+                    urlRewardImg = it?.urlRewardImg,
+                    rewardDoc = it?.rewardDoc
                 )
             }
 
@@ -225,6 +226,31 @@ class Repository private constructor(
             val errorMessage = errorBody.message
             emit(Result.Error("Get Reward failed : $errorMessage"))
             Log.d("reward", e.toString())
+        } catch (e: Exception) {
+            Log.d("error", e.toString())
+            emit(Result.Error("Signal Problem"))
+        }
+    }
+
+    fun getDetailReward(id: String) = liveData {
+        emit(Result.Loading)
+        try {
+            val user = runBlocking { userPreference.getSession().first() }
+            val response = ApiConfig.getApiService(user.user_id)
+            val detailRewardResponse =   response.getDetailReward(id)
+
+            if (detailRewardResponse != null){
+                emit(Result.Success(detailRewardResponse))
+            }
+
+
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+            val errorMessage = errorBody.message
+            emit(Result.Error("GetDetailReward Failed : $errorMessage"))
+            Log.d("error", e.toString())
+
         } catch (e: Exception) {
             Log.d("error", e.toString())
             emit(Result.Error("Signal Problem"))

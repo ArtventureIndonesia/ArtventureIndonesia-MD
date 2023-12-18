@@ -5,7 +5,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 @Parcelize
-data class RewardResponse(
+data class DetailRewardResponse(
 
 	@field:SerializedName("error")
 	val error: Boolean? = null,
@@ -14,20 +14,20 @@ data class RewardResponse(
 	val message: String? = null,
 
 	@field:SerializedName("rewardsData")
-	val rewardsData: List<RewardsDataItem?>? = null
+	val rewardsData: RewardsData
 ) : Parcelable
 
 @Parcelize
-data class RewardsDataItem(
-
-	@field:SerializedName("reward_doc")
-	val rewardDoc: String? = null,
+data class RewardsData(
 
 	@field:SerializedName("reward_name")
 	val rewardName: String? = null,
 
 	@field:SerializedName("reward_point")
 	val rewardPoint: Int? = null,
+
+	@field:SerializedName("reward_doc")
+	val rewardDoc: String? = null,
 
 	@field:SerializedName("url_reward_img")
 	val urlRewardImg: String? = null
