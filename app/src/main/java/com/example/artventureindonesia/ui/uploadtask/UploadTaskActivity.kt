@@ -14,9 +14,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.example.artventureindonesia.R
 import com.example.artventureindonesia.databinding.ActivityUploadTaskBinding
+import com.example.artventureindonesia.databinding.CostumeAlertBinding
 import com.example.artventureindonesia.remote.response.MLResponse
 import com.example.artventureindonesia.ui.viewmodel.ViewModelFactory
 import com.example.artventureindonesia.remote.result.Result
+import com.example.artventureindonesia.ui.costumeDialog.AlertDialogCostume
 import com.example.artventureindonesia.ui.detailtask.DetailTaskActivity
 import com.example.artventureindonesia.ui.task.TaskActivity
 import com.example.artventureindonesia.utils.getImageUri
@@ -33,6 +35,9 @@ class UploadTaskActivity : AppCompatActivity() {
     }
 
     private var objectDocId: String? = null
+
+    private val successDialog: AlertDialogCostume = AlertDialogCostume.newInstance("success")
+    private val falseDialog: AlertDialogCostume = AlertDialogCostume.newInstance("false")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +79,8 @@ class UploadTaskActivity : AppCompatActivity() {
                                 is Result.Success -> {
                                     showLoading(false)
                                     handleUploadResult(result.data)
+//                                    successDialog.result = false
+//                                    successDialog.show(supportFragmentManager, "success")
                                 }
 
                                 is Result.Error -> {
@@ -133,9 +140,12 @@ class UploadTaskActivity : AppCompatActivity() {
 
     private fun handleUploadResult(response: MLResponse) {
         if (response.result == "Gagal") {
-            alertDialog("Kamu salah mengerjakan task", stayOnPage = true)
+            falseDialog.result = false
+            falseDialog.show(supportFragmentManager, "false")
+//            alertDialog("Kamu salah mengerjakan task", stayOnPage = true)
         } else if (response.result == "Behasil") {
-            alertDialog(response.message ?: getString(R.string.congrats), stayOnPage = false)
+            successDialog.result = true
+            successDialog.show(supportFragmentManager, "success")
         } else if (response.message == "Object has been taked by user") {
             alertDialog(response.message, stayOnPage = true)
         }
@@ -157,29 +167,6 @@ class UploadTaskActivity : AppCompatActivity() {
             show()
         }
     }
-
-//    private fun showAlertDialogCostume(type: Int) {
-//        val alertDialogBuilder = AlertDialog.Builder(this@UploadTaskActivity).create()
-//        val view = layoutInflater.inflate(R.layout.costume_alert, null)
-//        alertDialogBuilder.setView(view)
-//        val btnOk = view.findViewById<Button>(R.id.btn_ok)
-//        alertDialogBuilder.setCanceledOnTouchOutside(false)
-//        btnOk.setOnClickListener {
-//            if (type == FIRST_NUMBER) {
-//                mainViewModel.setNumber(firstNumber, true)
-//                Toast.makeText(this@MainActivity, "${firstNumber.value}", Toast.LENGTH_SHORT)
-//                    .show()
-//                setImageNumber()
-//            } else {
-//                mainViewModel.setSecondNumber(secondNumber, true)
-//                Toast.makeText(this@MainActivity, "${secondNumber.value}", Toast.LENGTH_SHORT)
-//                    .show()
-//                setSecondImageNumber()
-//            }
-//            alertDialogBuilder.dismiss()
-//        }
-//        alertDialogBuilder.show()
-//    }
 
 
     companion object {

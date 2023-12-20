@@ -13,11 +13,10 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.artventureindonesia.databinding.ActivityRewardBinding
-import com.example.artventureindonesia.remote.response.RewardsDataItem
+import com.example.artventureindonesia.remote.response.RewardDataItem
 import com.example.artventureindonesia.remote.result.Result
 import com.example.artventureindonesia.ui.adapter.RewardAdapter
 import com.example.artventureindonesia.ui.login.LoginActivity
-import com.example.artventureindonesia.ui.uploadtask.UploadTaskActivity
 import com.example.artventureindonesia.ui.viewmodel.ViewModelFactory
 
 class RewardActivity : AppCompatActivity() {
@@ -78,11 +77,12 @@ class RewardActivity : AppCompatActivity() {
 
                     }
                 }
+            binding.tvPointdetail.text = user.point.toString()
 //            }
         }
     }
 
-    private fun rewardAdapter(listReward: List<RewardsDataItem>) {
+    private fun rewardAdapter(listReward: List<RewardDataItem>) {
         val adapter = RewardAdapter(this@RewardActivity)
         adapter.submitList(listReward)
         binding.rvReward.adapter = adapter

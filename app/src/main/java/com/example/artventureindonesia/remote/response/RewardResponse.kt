@@ -13,21 +13,24 @@ data class RewardResponse(
 	@field:SerializedName("message")
 	val message: String? = null,
 
-	@field:SerializedName("rewardsData")
-	val rewardsData: List<RewardsDataItem?>? = null
+	@field:SerializedName("rewardData")
+	val rewardData: List<RewardDataItem?>? = null
 ) : Parcelable
 
 @Parcelize
-data class RewardsDataItem(
-
-	@field:SerializedName("reward_doc")
-	val rewardDoc: String? = null,
+data class RewardDataItem(
 
 	@field:SerializedName("reward_name")
 	val rewardName: String? = null,
 
 	@field:SerializedName("reward_point")
 	val rewardPoint: Int? = null,
+
+	@field:SerializedName("reward_id")
+	val rewardId: Int? = null,
+
+	@field:SerializedName("reward_doc")
+	val rewardDoc: String? = null,
 
 	@field:SerializedName("url_reward_img")
 	val urlRewardImg: String? = null

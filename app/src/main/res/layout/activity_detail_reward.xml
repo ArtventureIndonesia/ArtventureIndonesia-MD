@@ -8,9 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="10dp">
-
 
 
         <ImageView
@@ -33,30 +32,41 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:gravity="center"
             android:text="Judul Reward"
             android:textColor="@android:color/black"
             android:textSize="32sp"
-            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_reward_detail" />
 
+
         <TextView
             android:id="@+id/text_deskripsi"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Point"
-            android:justificationMode="inter_word"
             android:gravity="center"
+            android:justificationMode="inter_word"
+            android:text="Point"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.456"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_detailreward" />
 
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="35dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_deskripsi"
+            app:layout_constraintStart_toEndOf="@+id/text_deskripsi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detailreward"
+            app:srcCompat="@drawable/coin" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -67,6 +77,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <Button
+            android:id="@+id/button_rewardchange"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/laila_bold"
+            android:text="Tukar Hadiah"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.337"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_deskripsi" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

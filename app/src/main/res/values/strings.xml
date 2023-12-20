@@ -37,4 +37,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="greeting">Hello %1$s</string>
+    <string name="kamu_berhasil">Kamu Berhasil!!</string>
+    <string name="kamu_gagal">Kamu Gagal!!</string>
 </resources>

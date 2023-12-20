@@ -1,5 +1,6 @@
 package com.example.artventureindonesia.ui.detailreward
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,8 +11,8 @@ import com.bumptech.glide.Glide
 import com.example.artventureindonesia.databinding.ActivityDetailRewardBinding
 import com.example.artventureindonesia.remote.response.DetailRewardResponse
 import com.example.artventureindonesia.remote.response.DetailTaskResponse
+import com.example.artventureindonesia.remote.response.RewardData
 import com.example.artventureindonesia.remote.response.RewardResponse
-import com.example.artventureindonesia.remote.response.RewardsData
 import com.example.artventureindonesia.remote.result.Result
 import com.example.artventureindonesia.ui.uploadtask.UploadTaskActivity
 import com.example.artventureindonesia.ui.viewmodel.ViewModelFactory
@@ -36,8 +37,11 @@ class DetailRewardActivity : AppCompatActivity() {
         getRewardDetail()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun getRewardDetail() {
+
         val id = intent.getStringExtra(ID)
+
 
             viewModel.getRewardDetail(id!!).observe(this) { result ->
                 if (result != null) {
@@ -49,7 +53,7 @@ class DetailRewardActivity : AppCompatActivity() {
                         is Result.Success -> {
                             showLoading(false)
 
-                            val rewardResponse = result.data.rewardsData
+                            val rewardResponse = result.data.rewardData
                             setDetailReward(rewardResponse)
 
                         }
@@ -62,9 +66,10 @@ class DetailRewardActivity : AppCompatActivity() {
 
             }
 
+
     }
 
-    private fun setDetailReward(reward: RewardsData) {
+    private fun setDetailReward(reward: RewardData) {
         binding.apply {
             Glide.with(binding.root.context)
                 .load(reward.urlRewardImg)

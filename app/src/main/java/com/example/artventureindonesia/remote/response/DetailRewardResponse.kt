@@ -8,27 +8,30 @@ import com.google.gson.annotations.SerializedName
 data class DetailRewardResponse(
 
 	@field:SerializedName("error")
-	val error: Boolean? = null,
+	val error: Boolean,
 
 	@field:SerializedName("message")
-	val message: String? = null,
+	val message: String,
 
-	@field:SerializedName("rewardsData")
-	val rewardsData: RewardsData
+	@field:SerializedName("rewardData")
+	val rewardData: RewardData
 ) : Parcelable
 
 @Parcelize
-data class RewardsData(
+data class RewardData(
 
 	@field:SerializedName("reward_name")
-	val rewardName: String? = null,
+	val rewardName: String,
 
 	@field:SerializedName("reward_point")
-	val rewardPoint: Int? = null,
+	val rewardPoint: Int,
+
+	@field:SerializedName("reward_id")
+	val rewardId: Int,
 
 	@field:SerializedName("reward_doc")
-	val rewardDoc: String? = null,
+	val rewardDoc: String,
 
 	@field:SerializedName("url_reward_img")
-	val urlRewardImg: String? = null
+	val urlRewardImg: String
 ) : Parcelable

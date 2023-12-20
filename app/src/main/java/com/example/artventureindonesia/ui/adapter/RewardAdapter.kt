@@ -10,14 +10,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.artventureindonesia.databinding.ItemRewardBinding
-import com.example.artventureindonesia.remote.response.RewardsData
+import com.example.artventureindonesia.remote.response.RewardDataItem
 
-import com.example.artventureindonesia.remote.response.RewardsDataItem
 import com.example.artventureindonesia.ui.detailreward.DetailRewardActivity
 import com.example.artventureindonesia.ui.reward.RewardActivity
 
 
-class RewardAdapter(private val context: Context) : ListAdapter<RewardsDataItem, RewardAdapter.MyViewHolder>(
+class RewardAdapter(private val context: Context) : ListAdapter<RewardDataItem, RewardAdapter.MyViewHolder>(
     DIFF_CALLBACK ){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -38,7 +37,7 @@ class RewardAdapter(private val context: Context) : ListAdapter<RewardsDataItem,
 
     class MyViewHolder(val binding: ItemRewardBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(reward: RewardsDataItem){
+        fun bind(reward: RewardDataItem){
             binding.tvReward.text = reward.rewardName
             binding.tvRewardPoint.text = reward.rewardPoint.toString()
             Glide.with(binding.root.context)
@@ -49,11 +48,11 @@ class RewardAdapter(private val context: Context) : ListAdapter<RewardsDataItem,
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<RewardsDataItem>() {
-            override fun areItemsTheSame(oldItem: RewardsDataItem, newItem: RewardsDataItem): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<RewardDataItem>() {
+            override fun areItemsTheSame(oldItem: RewardDataItem, newItem: RewardDataItem): Boolean {
                 return oldItem == newItem
             }
-            override fun areContentsTheSame(oldItem: RewardsDataItem, newItem: RewardsDataItem): Boolean {
+            override fun areContentsTheSame(oldItem: RewardDataItem, newItem: RewardDataItem): Boolean {
                 return oldItem == newItem
             }
         }

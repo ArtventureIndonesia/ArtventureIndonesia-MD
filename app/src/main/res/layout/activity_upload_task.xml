@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/image_choose"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45964432" />
+        app:layout_constraintGuide_percent="0.63" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="554dp" />
+        app:layout_constraintGuide_begin="577dp" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -72,7 +72,7 @@
     <Button
         android:id="@+id/btn_camera"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="62dp"
         android:backgroundTint="@color/purple"
@@ -89,7 +89,7 @@
     <Button
         android:id="@+id/btn_gallery"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="62dp"
         android:backgroundTint="@color/purple"

@@ -15,7 +15,7 @@ import com.example.artventureindonesia.remote.response.LoginResponse
 import com.example.artventureindonesia.remote.response.MLResponse
 import com.example.artventureindonesia.remote.response.MuseumDataItem
 import com.example.artventureindonesia.remote.response.RegisterResponse
-import com.example.artventureindonesia.remote.response.RewardsDataItem
+import com.example.artventureindonesia.remote.response.RewardDataItem
 import com.example.artventureindonesia.remote.response.TaskDataItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -197,6 +197,7 @@ class Repository private constructor(
             emit(Result.Error(errorResponse.message ?: "Error tidak diketahui"))
         } catch (e: Exception) {
             emit(Result.Error("Kesalahan jaringan atau server"))
+            Log.d("errortak", e.toString())
         }
     }
 
@@ -206,14 +207,15 @@ class Repository private constructor(
             val user = runBlocking { userPreference.getSession().first() }
             val response = ApiConfig.getApiService(user.user_id)
             val rewardResponse = response.getReward()
-            val reward = rewardResponse.rewardsData
+            val reward = rewardResponse.rewardData
 
             val rewardList = reward?.map { it ->
-                RewardsDataItem(
+                RewardDataItem(
                     rewardName = it?.rewardName,
                     rewardPoint = it?.rewardPoint,
                     urlRewardImg = it?.urlRewardImg,
-                    rewardDoc = it?.rewardDoc
+                    rewardDoc = it?.rewardDoc,
+                    rewardId = it?.rewardId
                 )
             }
 
@@ -249,7 +251,7 @@ class Repository private constructor(
             val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
             val errorMessage = errorBody.message
             emit(Result.Error("GetDetailReward Failed : $errorMessage"))
-            Log.d("error", e.toString())
+            Log.d("reward", e.toString())
 
         } catch (e: Exception) {
             Log.d("error", e.toString())
