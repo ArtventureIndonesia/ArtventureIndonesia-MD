@@ -1,9 +1,11 @@
 package com.example.artventureindonesia.ui.login
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.artventureindonesia.pref.UserModel
 import com.example.artventureindonesia.remote.repository.Repository
+import com.example.artventureindonesia.remote.response.LoginResponse
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: Repository) : ViewModel() {
@@ -15,4 +17,6 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
             repository.saveSession(user)
         }
     }
+
+
 }

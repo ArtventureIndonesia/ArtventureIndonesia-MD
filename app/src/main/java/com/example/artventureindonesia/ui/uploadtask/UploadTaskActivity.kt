@@ -143,7 +143,7 @@ class UploadTaskActivity : AppCompatActivity() {
             falseDialog.result = false
             falseDialog.show(supportFragmentManager, "false")
 //            alertDialog("Kamu salah mengerjakan task", stayOnPage = true)
-        } else if (response.result == "Behasil") {
+        } else if (response.result == "Berhasil") {
             successDialog.result = true
             successDialog.show(supportFragmentManager, "success")
         } else if (response.message == "Object has been taked by user") {

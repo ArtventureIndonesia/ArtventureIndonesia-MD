@@ -159,14 +159,14 @@
         app:srcCompat="@drawable/coin" />
 
     <ImageView
+        android:layout_marginTop="10dp"
         android:id="@+id/imageViewPlace"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/btn_rank"
         app:srcCompat="@drawable/opening_box" />
 
 
@@ -181,7 +181,6 @@
         android:text="Select museum"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewPlace" />
 
@@ -198,16 +197,47 @@
         tools:listitem="@layout/item_place" />
 
     <ImageButton
-        android:id="@+id/btn_settings"
-        android:layout_width="68dp"
-        android:layout_height="69dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="44dp"
+        android:id="@+id/btn_articel"
+        android:layout_width="95dp"
+        android:layout_height="87dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:src="@drawable/setting_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:elevation="20dp"
+        android:src="@drawable/icon_articel"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_rank"
+        app:layout_constraintEnd_toStartOf="@+id/btn_rank"
+        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_rank"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/btn_rank"
+        android:layout_width="95dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="12dp"
+        android:elevation="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icon_rank"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <ImageButton
+        android:id="@+id/btn_settings"
+        android:layout_width="95dp"
+        android:layout_height="87dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icon_settings"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_rank"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toEndOf="@+id/btn_rank"
+        app:layout_constraintTop_toTopOf="@+id/btn_rank"
+        android:elevation="20dp"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ProgressBar
         android:id="@+id/progressBar"

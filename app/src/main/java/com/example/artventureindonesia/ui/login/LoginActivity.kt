@@ -134,6 +134,7 @@ class LoginActivity : AppCompatActivity() {
                                 user_id = result.data.userData.userId,
                                 email = email,
                                 point = result.data.userData.userPoints,
+                                name = result.data.userData.userName
                             )
                             viewModel.saveSession(user)
                             alertDialog()

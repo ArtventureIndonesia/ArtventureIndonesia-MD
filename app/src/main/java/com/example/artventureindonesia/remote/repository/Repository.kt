@@ -14,9 +14,11 @@ import com.example.artventureindonesia.remote.response.ErrorResponse
 import com.example.artventureindonesia.remote.response.LoginResponse
 import com.example.artventureindonesia.remote.response.MLResponse
 import com.example.artventureindonesia.remote.response.MuseumDataItem
+import com.example.artventureindonesia.remote.response.NewsDataItem
 import com.example.artventureindonesia.remote.response.RegisterResponse
 import com.example.artventureindonesia.remote.response.RewardDataItem
 import com.example.artventureindonesia.remote.response.TaskDataItem
+import com.example.artventureindonesia.remote.response.UserDataItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -71,6 +73,7 @@ class Repository private constructor(
                     user_id = loginResponse.userData.userId,
                     isLogin = true,
                     point = loginResponse.userData.userPoints,
+                    name = loginResponse.userData.userName
                 )
                 ApiConfig.userId = loginResponse.message
                 userPreference.saveSession(user)
@@ -253,6 +256,94 @@ class Repository private constructor(
             emit(Result.Error("GetDetailReward Failed : $errorMessage"))
             Log.d("reward", e.toString())
 
+        } catch (e: Exception) {
+            Log.d("error", e.toString())
+            emit(Result.Error("Signal Problem"))
+        }
+    }
+
+//    fun getDetailArticel(id: String) = liveData {
+//        emit(Result.Loading)
+//        try {
+//            val user = runBlocking { userPreference.getSession().first() }
+//            val response = ApiConfig.getApiService(user.user_id)
+//            val detailArticelResponse =   response.getDetailArticel(id)
+//
+//            if (getDetailArticel != null){
+//                emit(Result.Success(getDetailArticel))
+//            }
+//
+//
+//        } catch (e: HttpException) {
+//            val jsonInString = e.response()?.errorBody()?.string()
+//            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+//            val errorMessage = errorBody.message
+//            emit(Result.Error("GetDetailReward Failed : $errorMessage"))
+//            Log.d("reward", e.toString())
+//
+//        } catch (e: Exception) {
+//            Log.d("error", e.toString())
+//            emit(Result.Error("Signal Problem"))
+//        }
+//    }
+
+    fun getRank() = liveData {
+        emit(Result.Loading)
+        try {
+            val user = runBlocking { userPreference.getSession().first() }
+            val response = ApiConfig.getApiService(user.user_id)
+            val rankResponse = response.getRank()
+            val rank = rankResponse.userData
+            val placeList = rank?.map { it ->
+                UserDataItem(
+                    userPoints = it?.userPoints,
+                    userId = it?.userId,
+                    userName = it?.userName,
+                    userRank = it?.userRank,
+
+                )
+            }
+            if (rankResponse.error == false) {
+                emit(Result.Success(placeList))
+            }
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+            val errorMessage = errorBody.message
+            emit(Result.Error("Get Task Failed : $errorMessage"))
+        } catch (e: Exception) {
+            Log.d("error", e.toString())
+            emit(Result.Error("Signal Problem"))
+        }
+    }
+
+    fun getArticel() = liveData {
+        emit(Result.Loading)
+        try {
+            val user = runBlocking { userPreference.getSession().first() }
+            val response = ApiConfig.getApiService(user.user_id)
+            val articelResponse = response.getArticel()
+            val rank = articelResponse.newsData
+            val placeList = rank?.map { it ->
+                NewsDataItem(
+                    newsDate = it?.newsDate,
+                    newsDoc = it?.newsDoc,
+                    newsAuthor = it?.newsAuthor,
+                    urlNewsImg = it?.urlNewsImg,
+                    newsTitle = it?.newsTitle,
+                    newsText = it?.newsText,
+                    newsId = it?.newsId
+
+                    )
+            }
+            if (articelResponse.error == false) {
+                emit(Result.Success(placeList))
+            }
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+            val errorMessage = errorBody.message
+            emit(Result.Error("Get Task Failed : $errorMessage"))
         } catch (e: Exception) {
             Log.d("error", e.toString())
             emit(Result.Error("Signal Problem"))

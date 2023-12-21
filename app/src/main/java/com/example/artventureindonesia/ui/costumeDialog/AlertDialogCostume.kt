@@ -7,9 +7,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.example.artventureindonesia.R
+import com.example.artventureindonesia.ui.detailtask.DetailTaskActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.example.artventureindonesia.ui.task.TaskActivity
@@ -53,17 +55,19 @@ class AlertDialogCostume: DialogFragment() {
         btnAction.setOnClickListener{
             if (result){
                 val intent = Intent(requireContext(), TaskActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
                 activity?.finish()
             } else {
-//                val intent = Intent(requireContext(), UploadTaskActivity::class.java)
-//                startActivity(intent)
-//                activity?.finish()
+
+                AlertDialog.cancel()
             }
         }
         AlertDialog.setCanceledOnTouchOutside(false)
         return AlertDialog
     }
+
+
 
     companion object {
         fun newInstance(message: String): AlertDialogCostume {

@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream"
-    tools:context=".ui.task.TaskActivity">
+    tools:context=".ui.articel.ArticelActivity">
 
     <ImageView
         android:id="@+id/img_taskbg"
-        android:layout_width="468dp"
-        android:layout_height="753dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
@@ -20,12 +20,26 @@
         app:srcCompat="@drawable/transpern_logo2" />
 
     <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/laila_bold"
+        android:text="Readmore Articel"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_task" />
+
+    <TextView
         android:id="@+id/tv_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/keaniaone_regular"
-        android:text="Task"
+        android:text="Articel"
         android:textColor="@color/black"
         android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,17 +47,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTask"
+        android:id="@+id/rvArticel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_task"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item_task" />
+        tools:listitem="@layout/item_articel" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -58,17 +71,7 @@
         app:layout_constraintVertical_bias="0.499"
         tools:visibility="visible" />
 
-    <ImageButton
-        android:id="@+id/img_reward"
-        android:layout_width="76dp"
-        android:layout_height="66dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="48dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/chest"
-        app:layout_constraintBottom_toBottomOf="@+id/rvTask"
-        app:layout_constraintEnd_toEndOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

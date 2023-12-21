@@ -20,7 +20,9 @@ import com.example.artventureindonesia.ui.login.LoginActivity
 import com.example.artventureindonesia.ui.opening.OpeningActivity
 import com.example.artventureindonesia.ui.viewmodel.ViewModelFactory
 import com.example.artventureindonesia.remote.result.Result
+import com.example.artventureindonesia.ui.articel.ArticelActivity
 import com.example.artventureindonesia.ui.detailtask.DetailTaskActivity
+import com.example.artventureindonesia.ui.rank.RankActivity
 import com.example.artventureindonesia.ui.register.RegisterActivity
 import com.example.artventureindonesia.ui.reward.RewardActivity
 import com.example.artventureindonesia.ui.setting.SettingsActivity
@@ -39,6 +41,9 @@ class MainActivity : AppCompatActivity() {
         getSession()
         setupView()
 
+
+
+
         val layoutManager = LinearLayoutManager(this)
         binding.rvPlace.layoutManager = layoutManager
 
@@ -51,13 +56,26 @@ class MainActivity : AppCompatActivity() {
             startActivity(intentSetting)
         }
 
+        binding.btnRank.setOnClickListener{
+            val intentSetting = Intent(this@MainActivity, RankActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intentSetting)
+        }
+
+        binding.btnArticel.setOnClickListener{
+            val intentSetting = Intent(this@MainActivity, ArticelActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intentSetting)
+        }
+
 
     }
 
     private fun getSession() {
         viewModel.getSession().observe(this) { user ->
-                val name = resources.getString(R.string.greeting, user.email)
+                val name = resources.getString(R.string.greeting, user.name)
                 binding.tvHello.text = name
+             binding.tvPoint.text = user.point.toString()
             if (!user.isLogin) {
                 startActivity(Intent(this, OpeningActivity::class.java))
                 finish()
@@ -89,10 +107,11 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
-                binding.tvPoint.text = user.point.toString()
+
             }
 
         }
+
     }
 
     private fun placeAdapter(listStory: List<MuseumDataItem>) {

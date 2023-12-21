@@ -18,6 +18,15 @@
         android:theme="@style/Theme.ArtventureIndonesia"
         tools:targetApi="31">
         <activity
+            android:name=".ui.detailarticel.DetailArticelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.articel.ArticelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.rank.RankActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.detailreward.DetailRewardActivity"
             android:exported="false" />
         <activity

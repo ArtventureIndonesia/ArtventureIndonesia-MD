@@ -38,9 +38,9 @@ class SettingsActivity : AppCompatActivity() {
                 startActivity(Intent(this, OpeningActivity::class.java))
                 finish()
             } else {
+                binding.tvUsername.text = user.name
+                binding.tvEmail.text = user.email
 
-                val greeting = resources.getString(R.string.greeting, user.email)
-                binding.tvEmail.text = greeting
             }
         }
 

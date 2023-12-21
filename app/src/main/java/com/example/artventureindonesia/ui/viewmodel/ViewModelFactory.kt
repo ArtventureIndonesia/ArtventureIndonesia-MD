@@ -5,10 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.artventureindonesia.di.Injection
 import com.example.artventureindonesia.remote.repository.Repository
+import com.example.artventureindonesia.ui.articel.ArticelViewModel
 import com.example.artventureindonesia.ui.dashboard.MainViewModel
 import com.example.artventureindonesia.ui.detailreward.DetailRewardViewModel
 import com.example.artventureindonesia.ui.detailtask.DetailTaskViewModel
 import com.example.artventureindonesia.ui.login.LoginViewModel
+import com.example.artventureindonesia.ui.rank.RankViewModel
 import com.example.artventureindonesia.ui.register.RegisterViewModel
 import com.example.artventureindonesia.ui.reward.RewardViewModel
 import com.example.artventureindonesia.ui.setting.SettingsViewModel
@@ -45,6 +47,12 @@ class ViewModelFactory (private val repository: Repository) : ViewModelProvider.
             }
             modelClass.isAssignableFrom(DetailRewardViewModel::class.java) -> {
                 DetailRewardViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(RankViewModel::class.java) -> {
+                RankViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ArticelViewModel::class.java) -> {
+                ArticelViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

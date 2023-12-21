@@ -1,10 +1,13 @@
 package com.example.artventureindonesia.remote.api
 
+import com.example.artventureindonesia.remote.response.ArticelResponse
+import com.example.artventureindonesia.remote.response.DetailArticelResponse
 import com.example.artventureindonesia.remote.response.DetailRewardResponse
 import com.example.artventureindonesia.remote.response.DetailTaskResponse
 import com.example.artventureindonesia.remote.response.LoginResponse
 import com.example.artventureindonesia.remote.response.MLResponse
 import com.example.artventureindonesia.remote.response.PlaceResponse
+import com.example.artventureindonesia.remote.response.RankResponse
 import com.example.artventureindonesia.remote.response.RegisterResponse
 import com.example.artventureindonesia.remote.response.RewardResponse
 import com.example.artventureindonesia.remote.response.TaskResponse
@@ -64,6 +67,16 @@ interface ApiService {
         @Path("reward_doc") rewardDoc: String
     ): DetailRewardResponse
 
+    @GET("/users/rank")
+    suspend fun getRank(): RankResponse
+
+    @GET("/news")
+    suspend fun getArticel(): ArticelResponse
+
+    @GET("/news/{news_doc}")
+    suspend fun getDetailArticel(
+        @Path("news_doc") newsDoc: String
+    ): DetailArticelResponse
 
 
 

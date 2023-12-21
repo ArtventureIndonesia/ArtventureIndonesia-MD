@@ -12,6 +12,7 @@ import com.example.artventureindonesia.ui.dashboard.MainActivity
 import com.example.artventureindonesia.ui.detailtask.DetailTaskActivity
 import com.example.artventureindonesia.ui.login.LoginActivity
 import com.example.artventureindonesia.ui.opening.OpeningActivity
+import com.example.artventureindonesia.ui.rank.RankActivity
 import com.example.artventureindonesia.ui.reward.RewardActivity
 import com.example.artventureindonesia.ui.task.TaskActivity
 import com.example.artventureindonesia.ui.uploadtask.UploadTaskActivity
