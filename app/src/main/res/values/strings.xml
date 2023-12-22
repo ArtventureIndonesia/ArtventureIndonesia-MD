@@ -28,6 +28,7 @@
     <string name="congrats">Congrats!</string>
     <string name="Logout">Logout!</string>
     <string name="next">Continue</string>
+    <string name="login_success">Login Success</string>
     <string name="account_created">Your account has been created</string>
     <string name="account_logout">Your account has been logout</string>
     <string name="email_username">Email/Username</string>

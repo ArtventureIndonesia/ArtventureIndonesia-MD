@@ -39,6 +39,7 @@
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
+            android:scaleType="centerCrop"
             android:layout_height="match_parent"
             android:src="@drawable/iklan1" />
 
@@ -46,12 +47,14 @@
             android:id="@+id/imageView7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:src="@drawable/iklan2" />
 
         <ImageView
             android:id="@+id/imageView8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:src="@drawable/iklan3" />
     </ViewFlipper>
 

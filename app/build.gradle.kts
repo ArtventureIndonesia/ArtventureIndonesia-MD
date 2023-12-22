@@ -56,10 +56,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     implementation("androidx.activity:activity-ktx:1.7.2")
 
-
     //circle image
     implementation ("de.hdodenhof:circleimageview:3.1.0")
-
 
     //remote
     implementation("com.github.bumptech.glide:glide:4.16.0")

@@ -152,7 +152,7 @@ class LoginActivity : AppCompatActivity() {
     private fun alertDialog() {
         AlertDialog.Builder(this).apply {
             val title = getString(R.string.congrats)
-            val accountCreated = getString(R.string.account_created)
+            val accountCreated = getString(R.string.login_success)
             val next = getString(R.string.next)
 
             setTitle(title)
